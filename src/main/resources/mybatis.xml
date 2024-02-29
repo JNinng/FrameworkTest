@@ -13,6 +13,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mappers/IStudentDao.xml"/>
+        <mapper class="top.ninng.dao.IStudentDao"/>
     </mappers>
 </configuration>
