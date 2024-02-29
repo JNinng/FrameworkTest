@@ -1,11 +1,11 @@
 package top.ninng;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import top.ninng.dao.IStudentDao;
 import top.ninng.domain.Student;
+import top.ninng.mybatis.Resources;
+import top.ninng.mybatis.session.SqlSession;
+import top.ninng.mybatis.session.SqlSessionFactory;
+import top.ninng.mybatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
