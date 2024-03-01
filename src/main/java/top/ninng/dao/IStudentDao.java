@@ -6,6 +6,10 @@ import top.ninng.domain.Student;
 
 import java.util.List;
 
+/**
+ * 开启二级缓存
+ */
+@CacheNamespace(blocking = true)
 public interface IStudentDao {
 
     /**
