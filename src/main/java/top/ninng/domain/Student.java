@@ -1,14 +1,17 @@
 package top.ninng.domain;
 
+import java.util.List;
+
 /**
  * 表 student
  */
 public class Student {
 
-    Integer id;
-    String name;
-    String sex;
-    String address;
+    private Integer id;
+    private String name;
+    private String sex;
+    private String address;
+    private List<Account> accounts;
 
     public Student() {
     }
@@ -27,6 +30,14 @@ public class Student {
                 ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 
     public String getAddress() {

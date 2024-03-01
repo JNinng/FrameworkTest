@@ -1,6 +1,7 @@
 package top.ninng.dao;
 
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 import top.ninng.domain.Student;
 
 import java.util.List;
@@ -34,7 +35,9 @@ public interface IStudentDao {
             @Result(id = true, column = "id", property = "id"),
             @Result(column = "name", property = "name"),
             @Result(column = "sex", property = "sex"),
-            @Result(column = "address", property = "address")
+            @Result(column = "address", property = "address"),
+            @Result(property = "accounts", column = "id"
+                    , many = @Many(select = "top.ninng.dao.IAccountDao.selectByStudentId", fetchType = FetchType.EAGER))
     })
     List<Student> selectAll();
 

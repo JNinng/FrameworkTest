@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Account implements Serializable {
 
     private Integer id;
-    private Integer userId;
+    private Integer studentId;
     private Double balance;
     private Student student;
 
@@ -18,7 +18,7 @@ public class Account implements Serializable {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", userId=" + userId +
+                ", studentId=" + studentId +
                 ", balance=" + balance +
                 ", student=" + student +
                 '}';
@@ -48,12 +48,12 @@ public class Account implements Serializable {
         this.student = student;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getStudentId() {
+        return studentId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
 }

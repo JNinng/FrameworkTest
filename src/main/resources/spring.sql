@@ -24,11 +24,11 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
   `balance` double DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `account_FK` (`user_id`),
-  CONSTRAINT `account_FK` FOREIGN KEY (`user_id`) REFERENCES `account` (`id`)
+  KEY `account_FK` (`student_id`),
+  CONSTRAINT `account_FK` FOREIGN KEY (`student_id`) REFERENCES `account` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,7 +55,7 @@ CREATE TABLE `student` (
   `sex` varchar(20) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-01 16:29:35
+-- Dump completed on 2024-03-01 16:42:08

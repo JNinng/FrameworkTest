@@ -47,6 +47,7 @@ public class MybatisMain {
             List<Student> students = studentDao.selectAll();
             for (Student s : students) {
                 System.out.println(s);
+                System.out.println(s.getAccounts());
             }
 
             IAccountDao accountDao = sqlSession.getMapper(IAccountDao.class);
