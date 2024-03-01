@@ -9,7 +9,6 @@ import top.ninng.domain.Student;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 /**
  * Mybatis 测试入口
@@ -36,20 +35,22 @@ public class MybatisMain {
             // 条件查询
             student = studentDao.selectByAddress(student.getAddress());
             System.out.println("select: " + student);
-
-            // 更新
-            student.setAddress(String.valueOf(System.currentTimeMillis()));
-            studentDao.updateStudent(student);
-
-            // 查询所有
-            List<Student> students = studentDao.selectAll();
-            for (Student s : students) {
-                System.out.println(s);
-            }
-
-            // 删除
-            studentDao.deleteById(student.getId());
+            // 一级缓存由 sqlSession 提供，随其关闭而释放
+            // 获取到一级缓存数据
+            System.out.println("select(一级缓存): " + studentDao.selectByAddress(student.getAddress()));
+            sqlSession.clearCache();
+            // 重新查询数据库获得数据
+            System.out.println("select(一级缓存): " + studentDao.selectByAddress(student.getAddress()));
             sqlSession.close();
+
+            // 二级缓存由 SqlSessionFactory 提供，由其创建的 sqlSession 共享二级缓存。
+            // 一级缓存所在 session 关闭后，一级缓存数据刷新到二级缓存，供后续创建使用
+            SqlSession sqlSession1 = factory.openSession(true);
+            IStudentDao studentDao1 = sqlSession1.getMapper(IStudentDao.class);
+            System.out.println("session1(二级缓存刷新数据): " + studentDao1.selectByAddress(student.getAddress()));
+
+            studentDao1.deleteById(student.getId());
+            sqlSession1.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

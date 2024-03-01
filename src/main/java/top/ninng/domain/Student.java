@@ -1,9 +1,11 @@
 package top.ninng.domain;
 
+import java.io.Serializable;
+
 /**
  * 表 student
  */
-public class Student {
+public class Student implements Serializable {
 
     Integer id;
     String name;
@@ -19,15 +21,15 @@ public class Student {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
-                ", address='" + address + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Student{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", sex='" + sex + '\'' +
+//                ", address='" + address + '\'' +
+//                '}';
+//    }
 
     public String getAddress() {
         return address;
