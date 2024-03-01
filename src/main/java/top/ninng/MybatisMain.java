@@ -4,7 +4,9 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import top.ninng.dao.IAccountDao;
 import top.ninng.dao.IStudentDao;
+import top.ninng.domain.Account;
 import top.ninng.domain.Student;
 
 import java.io.IOException;
@@ -45,6 +47,13 @@ public class MybatisMain {
             List<Student> students = studentDao.selectAll();
             for (Student s : students) {
                 System.out.println(s);
+            }
+
+            IAccountDao accountDao = sqlSession.getMapper(IAccountDao.class);
+            List<Account> accounts = accountDao.selectAll();
+            for (Account account : accounts) {
+                System.out.println(account);
+                System.out.println(account.getStudent());
             }
 
             // 删除

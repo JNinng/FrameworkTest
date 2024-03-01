@@ -49,6 +49,15 @@ public interface IStudentDao {
     Student selectByAddress(String address);
 
     /**
+     * 根据 id 查询
+     *
+     * @param id
+     * @return
+     */
+    @Select("select * from student where id=#{id}")
+    Student selectById(Integer id);
+
+    /**
      * 更新学生信息
      *
      * @param student
