@@ -1,42 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--  Bean 创建方法 1：使用默认构造函数创建  -->
-    <!--  scope: singleton(单例，默认值),prototype,request,session,global-session  -->
-    <bean class="top.ninng.dao.impl.StudentDao" id="studentDao">
-        <!--    构造函数注入    -->
-        <!--        <constructor-arg name="author" value="xml(constructor)"/>-->
-        <!--        <constructor-arg name="i" value="1"/>-->
-        <!--        <constructor-arg name="date" ref="now"/>-->
+    <context:component-scan base-package="top.ninng"/>
 
-        <!--    set 注入    -->
-        <property name="author" value="xml(set)"/>
-        <property name="i" value="1"/>
-        <property name="date" ref="now"/>
-        <property name="list">
-            <list>
-                <value>2</value>
-                <value>4</value>
-            </list>
-            <!--            <map>-->
-            <!--                <entry key="2" value="2"/>-->
-            <!--                <entry key="3">-->
-            <!--                    <value>3</value>-->
-            <!--                </entry>-->
-            <!--            </map>-->
-        </property>
-    </bean>
     <bean class="java.util.Date" id="now"/>
-
-    <!--  Bean 创建方法 2：使用工厂（某类）的方法创建，当某包下目标类无法使用构造函数创建时使用  -->
-    <!--  创建工厂  -->
-    <bean class="top.ninng.factory.DaoFactory" id="daoFactory"/>
-    <!--  指定工厂方法获取  -->
-    <bean factory-bean="daoFactory" factory-method="getStudentDao" id="studentDaoFactory"/>
-
-    <!--  Bean 创建方法 3：使用工厂（某类）的静态方法创建，当某包下目标类无法使用构造函数创建时使用  -->
-    <!--  直接调用静态方法获取  -->
-    <bean class="top.ninng.factory.DaoStaticFactory" factory-method="getStudentDao" id="studentDaoStaticFactory"/>
 </beans>
