@@ -9,10 +9,11 @@ import top.ninng.service.IStudentService;
 public class SpringMain {
 
     public static void main(String[] args) {
+        // XML 配置信息
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean.xml");
         IStudentService studentService = applicationContext.getBean("studentService", IStudentService.class);
-        studentService.select("");
-
+        System.out.println(studentService.selectAll());
+        studentService.transactionTest();
         applicationContext.close();
     }
 }
