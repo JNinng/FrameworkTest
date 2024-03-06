@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.ninng.dao.IStudentDao;
 import top.ninng.domain.Student;
 import top.ninng.service.IStudentService;
@@ -18,6 +19,7 @@ import java.util.List;
  * {@link Repository} 持久层
  */
 @Service(value = "studentService")
+@Transactional
 public class StudentService implements IStudentService {
 
     @Resource(name = "studentDao")

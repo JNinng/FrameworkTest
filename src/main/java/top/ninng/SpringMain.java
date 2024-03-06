@@ -1,6 +1,7 @@
 package top.ninng;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import top.ninng.cfg.SpringConfig;
 import top.ninng.service.IStudentService;
 
 /**
@@ -9,8 +10,8 @@ import top.ninng.service.IStudentService;
 public class SpringMain {
 
     public static void main(String[] args) {
-        // XML 配置信息
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean.xml");
+        // 注解配置信息
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
         IStudentService studentService = applicationContext.getBean("studentService", IStudentService.class);
         System.out.println(studentService.selectAll());
         studentService.transactionTest();
