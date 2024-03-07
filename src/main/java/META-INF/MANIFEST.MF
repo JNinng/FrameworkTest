@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: spring-context-5.3.31.jar spring-aop-5.3.31.jar spring-expre
+ ssion-5.3.31.jar spring-web-5.3.31.jar spring-jcl-5.3.31.jar spring-web
+ mvc-5.3.31.jar spring-core-5.3.31.jar spring-beans-5.3.31.jar
+
