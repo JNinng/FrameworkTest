@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 public class HelloService implements IHelloService {
 
     @Override
-    public String hello() {
-        System.out.println("hello");
+    public String hello(String name) {
+        System.out.println("hello: " + name);
         return "success";
     }
 }

@@ -21,6 +21,13 @@
     </bean>
 
     <!--  SpringMVC 注解支持  -->
-    <mvc:annotation-driven/>
-    <!--    <mvc:default-servlet-handler/>-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+
+    <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
+        <property name="converters">
+            <set>
+                <bean class="top.ninng.utils.StringToDateConverter"/>
+            </set>
+        </property>
+    </bean>
 </beans>
