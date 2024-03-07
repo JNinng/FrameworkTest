@@ -7,6 +7,10 @@ import top.ninng.domain.Hello;
 import top.ninng.service.IHelloService;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Hello 控制器类
@@ -52,5 +56,20 @@ public class HelloController {
     @RequestMapping(value = "/hello", method = {RequestMethod.POST})
     public String helloPostHello(Hello hello) {
         return helloService.hello("post .. " + hello);
+    }
+
+    @RequestMapping(value = "/void", method = {RequestMethod.GET})
+    public void helloVoid(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 手动跳转
+//        request.getRequestDispatcher("/WEB-INF/pages/fail.jsp").forward(request, response);
+
+        // 重定向
+//        response.sendRedirect(request.getContextPath() + "/index.jsp");
+
+        // 直接响应
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset+UTF-8");
+        response.getWriter().println("helloVoid");
+        return;
     }
 }
