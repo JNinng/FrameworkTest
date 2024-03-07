@@ -3,6 +3,7 @@ package top.ninng.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import top.ninng.domain.Hello;
 import top.ninng.service.IHelloService;
 
@@ -34,6 +35,14 @@ public class HelloController {
     public String hello(@PathVariable(value = "name") String name, Model model) {
         model.addAttribute("name", name);
         return helloService.hello(name);
+    }
+
+    @RequestMapping(value = "/mv", method = {RequestMethod.GET})
+    public ModelAndView helloMV() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("hello", new Hello());
+        mv.setViewName("mv");
+        return mv;
     }
 
     /**
