@@ -1,10 +1,8 @@
 package top.ninng.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import top.ninng.domain.Hello;
 import top.ninng.service.IHelloService;
 
@@ -15,6 +13,7 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping(path = "/hello")
+@SessionAttributes(value = {"name"})
 public class HelloController {
 
     @Resource(name = "helloService")
@@ -24,10 +23,12 @@ public class HelloController {
      * GET 请求与参数绑定
      *
      * @param name
+     * @param model
      * @return
      */
     @RequestMapping(value = "/{name}", method = {RequestMethod.GET})
-    public String hello(@PathVariable(value = "name") String name) {
+    public String hello(@PathVariable(value = "name") String name, Model model) {
+        model.addAttribute("name", name);
         return helloService.hello(name);
     }
 
