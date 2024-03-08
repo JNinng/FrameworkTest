@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="top.ninng.dao.IStudentDao">
+    <select id="selectAll" resultType="top.ninng.domain.Student">
+        select *
+        from student
+    </select>
+</mapper>
