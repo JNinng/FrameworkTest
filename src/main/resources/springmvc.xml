@@ -23,6 +23,8 @@
     <!--  SpringMVC 注解支持  -->
     <mvc:annotation-driven conversion-service="conversionService"/>
 
+    <bean class="top.ninng.exception.WebSystemExceptionResolver" id="exceptionResolver"/>
+
     <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
         <property name="converters">
             <set>

@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import top.ninng.domain.Hello;
+import top.ninng.exception.WebSystemException;
 import top.ninng.service.IHelloService;
 
 import javax.annotation.Resource;
@@ -35,6 +36,22 @@ public class HelloController {
     public String hello(@PathVariable(value = "name") String name, Model model) {
         model.addAttribute("name", name);
         return helloService.hello(name);
+    }
+
+    /**
+     * 异常处理测试
+     *
+     * @return
+     */
+    @RequestMapping(value = "/e", method = {RequestMethod.GET})
+    public String helloError() throws WebSystemException {
+        try {
+            int i = 1 / 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new WebSystemException("执行测试异常");
+        }
+        return helloService.hello("success");
     }
 
     @RequestMapping(value = "/mv", method = {RequestMethod.GET})
