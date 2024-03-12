@@ -1,0 +1,8 @@
+server:
+  port: 8081
+
+name: 测试名
+# @ConfigurationProperties(prefix = "hello")
+# helloControllerId
+hello:
+  hello-controller-id: 1001
